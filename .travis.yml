@@ -6,8 +6,9 @@ python:
 # command to install dependencies
 install:
   - "pip install -e . --upgrade"
+  - "pip install pipenv"
   - "pipenv install --dev"
 
 # command to run tests
 script:
-  - pytest # or py.test for Python versions 3.5 and below
+  - pipenv run python -m pytest tests # or py.test for Python versions 3.5 and below
