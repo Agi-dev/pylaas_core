@@ -1,0 +1,46 @@
+{
+  "test_add_definition_with_dict_return_self": {
+    "firstOne": {
+      "some data1": [
+        4,
+        5
+      ]
+    },
+    "secondOne": [
+      2,
+      3
+    ],
+    "thirdOne": "some values"
+  },
+  "test_add_definition_with_file_return_self": {
+    "configurations": {
+      "dummyConfigurable": {
+        "dict": "is dictionary"
+      }
+    },
+    "services": {
+      "dummy": "pylaas_core.tests.dummy",
+      "dummyConfigurable": "pylaas_core.tests.dummy_configurable"
+    }
+  },
+  "test_get_with_configurable_service_return_service": {
+    "string": "is a string",
+    "array": [
+      1,
+      2,
+      3
+    ],
+    "dict": {
+      "key1": 10,
+      "key2": 20,
+      "key3": {
+        "kk": [
+          4,
+          5,
+          "a string"
+        ],
+        "ii": 10
+      }
+    }
+  }
+}

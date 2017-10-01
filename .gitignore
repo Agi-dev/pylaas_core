@@ -1,0 +1,8 @@
+.idea
+.cache
+!.idea/runConfigurations
+!.idea/runConfigurations/*
+!.gitkeep
+*.bak
+Pipfile.lock
+.DS_Store

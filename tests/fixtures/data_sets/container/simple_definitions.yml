@@ -1,0 +1,7 @@
+configurations:
+  dummyConfigurable:
+    dict: is dictionary
+
+services:
+  dummy: pylaas_core.tests.dummy
+  dummyConfigurable: pylaas_core.tests.dummy_configurable

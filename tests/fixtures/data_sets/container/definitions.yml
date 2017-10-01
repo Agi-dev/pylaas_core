@@ -1,0 +1,12 @@
+configurations:
+  dummyConfigurable:
+    string: is a string
+    array: [1,2,3]
+    dict:
+      key1: 10
+      key2: 20
+      key3: {'kk': [4,5,'a string'], 'ii': 10}
+
+services:
+  dummy: tests.fixtures.data_sets.service.dummy.dummy.Dummy
+  dummyConfigurable: tests.fixtures.data_sets.service.dummy.dummy_configurable.DummyConfigurable
