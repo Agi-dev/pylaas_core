@@ -1,5 +1,4 @@
 import pytest
-
 from pylaas_core.abstract.abstract_test_case import AbstractTestCase
 from pylaas_core.technical.container import *
 from tests.fixtures.data_sets.service.dummy.dummy import Dummy
@@ -39,11 +38,11 @@ class TestContainer(AbstractTestCase):
 
     def test_has_with_unknown_service_return_false(self):
         container = self._init_container()
-        assert False == container.has("unknownService")
+        assert not container.has("unknownService")
 
     def test_has_with_unknown_service_return_true(self):
         container = self._init_container()
-        assert True == container.has("dummy")
+        assert container.has("dummy")
 
     """
     get
@@ -63,6 +62,6 @@ class TestContainer(AbstractTestCase):
 
     def test_get_with_configurable_service_return_service(self):
         container = self._init_container()
-        service = container.get('dummyConfigurable')
+        service = container.get('dummy_configurable')
         assert isinstance(service, DummyConfigurable)
         self.assert_equals_resultset(service._configs)

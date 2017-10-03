@@ -1,5 +1,5 @@
 configurations:
-  dummyConfigurable:
+  dummy_configurable:
     string: is a string
     array: [1,2,3]
     dict:
@@ -9,4 +9,4 @@ configurations:
 
 services:
   dummy: tests.fixtures.data_sets.service.dummy.dummy.Dummy
-  dummyConfigurable: tests.fixtures.data_sets.service.dummy.dummy_configurable.DummyConfigurable
+  dummy_configurable: tests.fixtures.data_sets.service.dummy.dummy_configurable.DummyConfigurable

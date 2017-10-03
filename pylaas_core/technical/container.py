@@ -7,10 +7,16 @@ from pylaas_core.interface.technical.container_interface import ContainerInterfa
 
 
 class Container(ContainerInterface):
-    """Container to handle DI"""
+    """Container to handle DI
 
-    _definitions = {}
-    _singletons = {}
+    Attributes:
+        _definitions (dict) : list of container definitions
+        _singletons (dict) : list of class singletons
+    """
+
+    def __init__(self):
+        self._definitions = {}
+        self._singletons = {}
 
     def add_definition(self, definitions):
         """Add definition to container

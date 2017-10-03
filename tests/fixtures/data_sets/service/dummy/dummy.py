@@ -1,8 +1,11 @@
-from pylaas_core.interface.core.service_interface import ServiceInterface
+from pylaas_core.abstract.abstract_service import AbstractService
 import time
 
 
-class Dummy(ServiceInterface):
+class Dummy(AbstractService):
     def __init__(self) -> None:
         super().__init__()
         self._microtime = int(round(time.time() * 1000))
+
+    def test_magic_service_injection(self):
+        return self.dummy_configurable_service

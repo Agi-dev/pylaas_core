@@ -29,6 +29,7 @@ class ContainerInterface(abc.ABC):
         """
         pass
 
+    @abc.abstractmethod
     def get(self, def_id):
         """Finds an entry of the container by its identifier and returns it.
 

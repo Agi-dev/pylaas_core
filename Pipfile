@@ -4,9 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+
 pyyaml = "*"
 "var-dump" = "*"
 
 
 [dev-packages]
-pytest = "*"
+
+"pytest-cov" = "*"
+"pytest-pep8" = "*"
+coveralls = "*"
