@@ -11,9 +11,8 @@ install:
 
 # command to run tests
 script:
-  - pipenv run python -m pytest tests # or py.test for Python versions 3.5 and below
-  - pipenv run python -m coverage run --source pylaas_core -m py.test
-  - pipenv run python -m coverage report -m
+  - pytest tests
+  - coverage run --source pylaas_core -m pytest
 
 after_success:
   - coveralls
