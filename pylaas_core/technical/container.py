@@ -18,7 +18,7 @@ class Container(ContainerInterface):
         self._definitions = {}
         self._singletons = {}
 
-    def add_definition(self, definitions):
+    def add_definitions(self, definitions):
         """Add definition to container
         Args:
             definitions (dict|string): list of definitions
@@ -38,6 +38,14 @@ class Container(ContainerInterface):
         else:
             self._definitions = definitions
         return self
+
+    def get_definitions(self):
+        """Get container definitions
+
+        Returns:
+            definitions (dict): list of definitions
+        """
+        return self._definitions
 
     def has(self, def_id):
         """Returns true if the container can return an entry for the given identifier.

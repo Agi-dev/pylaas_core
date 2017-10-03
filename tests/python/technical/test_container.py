@@ -8,29 +8,43 @@ from tests.fixtures.data_sets.service.dummy.dummy_configurable import DummyConfi
 class TestContainer(AbstractTestCase):
     def _init_container(self):
         container = Container()
-        container.add_definition(self.datasets_path + '/container/definitions.yml')
+        container.add_definitions(self.datasets_path + '/container/definitions.yml')
         return container
 
     """
     add_definition
     """
 
-    def test_add_definition_with_dict_return_self(self):
+    def test_add_definitions_with_dict_return_self(self):
         container = Container()
-        container.add_definition({'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]})
-        result = container.add_definition({'secondOne': [2, 3], 'thirdOne': 'some values'})
+        container.add_definitions({'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]})
+        result = container.add_definitions({'secondOne': [2, 3], 'thirdOne': 'some values'})
         assert result == container
         self.assert_equals_resultset(container._definitions)
 
-    def test_add_definition_with_unknown_file_raise_exception(self):
+    def test_add_definitions_with_unknown_file_raise_exception(self):
         container = Container()
         with pytest.raises(FileExistsError):
-            container.add_definition('unknownFile')
+            container.add_definitions('unknownFile')
 
-    def test_add_definition_with_file_return_self(self):
+    def test_add_definitions_with_file_return_self(self):
         container = Container()
-        container.add_definition(self.datasets_path + '/container/simple_definitions.yml')
+        container.add_definitions(self.datasets_path + '/container/simple_definitions.yml')
         self.assert_equals_resultset(container._definitions)
+
+    """
+    get_definitions
+    """
+
+    def test_get_definitions_with_no_definitions_return_empty_dict(self):
+        container = Container()
+        assert {} == container.get_definitions()
+
+    def test_get_definitions_with_definitions_return_dict(self):
+        container = Container()
+        definitions = {'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]}
+        container.add_definitions(definitions)
+        assert definitions == container.get_definitions()
 
     """
     has

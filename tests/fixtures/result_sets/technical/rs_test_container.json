@@ -1,5 +1,5 @@
 {
-  "test_add_definition_with_dict_return_self": {
+  "test_add_definitions_with_dict_return_self": {
     "firstOne": {
       "some data1": [
         4,
@@ -12,7 +12,7 @@
     ],
     "thirdOne": "some values"
   },
-  "test_add_definition_with_file_return_self": {
+  "test_add_definitions_with_file_return_self": {
     "configurations": {
       "dummyConfigurable": {
         "dict": "is dictionary"

@@ -36,7 +36,7 @@ class PylaasCore(abc.ABC):
             definitions (dict|string): container definitions
         """
         cls._container = Container()
-        cls._container.add_definition(definitions)
+        cls._container.add_definitions(definitions)
 
     @classmethod
     def get_container(cls):

@@ -7,14 +7,23 @@ class ContainerInterface(abc.ABC):
     """
 
     @abc.abstractmethod
-    def add_definition(self, definitions):
+    def add_definitions(self, definitions):
         """Add definition to container
-       Args:
-           definitions (dict|string): list of definitions
+        Args:
+            definitions (dict|string): list of definitions
 
-       Returns:
-           ContainerInterface
-       """
+        Returns:
+            ContainerInterface
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_definitions(self):
+        """Get container definitions
+
+        Returns:
+            definitions (dict): list of definitions
+        """
         pass
 
     @abc.abstractmethod
