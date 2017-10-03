@@ -14,11 +14,11 @@ class TestPylaasCore:
             PylaasCore()
 
     """
-    init
+    _init
     """
 
-    def test_init_success(self):
-        PylaasCore.init({'services': 'a service'})
+    def test__init_success(self):
+        PylaasCore._init({'services': 'a service'})
         assert PylaasCore._container._definitions == {'services': 'a service'}
 
     """
@@ -26,5 +26,5 @@ class TestPylaasCore:
     """
 
     def test_get_container(self):
-        PylaasCore.init({'services': 'a service'})
+        PylaasCore._init({'services': 'a service'})
         assert isinstance(PylaasCore.get_container(), Container)

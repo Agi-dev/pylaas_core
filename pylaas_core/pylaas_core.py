@@ -1,12 +1,12 @@
 """
 This module implements the alfred core system.
 
-PylaasCore.init(<definitions: file|{}>)
 """
+import abc
 from pylaas_core.technical.container import Container
 
 
-class PylaasCore:
+class PylaasCore(abc.ABC):
     """
     Attributes:
         _container (Container) : unique instance
@@ -18,14 +18,22 @@ class PylaasCore:
         """
         raise TypeError("PylaasCore class may not be instantiated")
 
+    @abc.abstractclassmethod
+    def init(cls):  # pragma: no cover
+        """Init AlfredCore
+
+        init default Container with definitions
+        """
+        pass
+
     @classmethod
-    def init(cls, definitions):
+    def _init(cls, definitions):
         """Init AlfredCore
 
         init default Container with definitions
 
         Args:
-            definitions (dict): container definitions
+            definitions (dict|string): container definitions
         """
         cls._container = Container()
         cls._container.add_definition(definitions)

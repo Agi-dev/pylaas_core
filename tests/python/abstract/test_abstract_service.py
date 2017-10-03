@@ -12,13 +12,13 @@ class TestAbstractService(AbstractTestCase):
     __getattr__
     """
     def test_get_attr_success_return_service(self):
-        PylaasCore.init(self.datasets_path + '/container/definitions.yml')
+        PylaasCore._init(self.datasets_path + '/container/definitions.yml')
         dummy = PylaasCore.get_service('dummy')
         dummyC = dummy.test_magic_service_injection()
         assert isinstance(dummyC, DummyConfigurable)
 
     def test_get_attr_with_unknown_method_raise_RuntimeError(self):
-        PylaasCore.init(self.datasets_path + '/container/definitions.yml')
+        PylaasCore._init(self.datasets_path + '/container/definitions.yml')
         dummy = PylaasCore.get_service('dummy')
         with pytest.raises(RuntimeError, match="service method 'bad_method_format' missing from class"):
             dummy.bad_method_format()
