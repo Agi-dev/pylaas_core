@@ -11,7 +11,7 @@ install:
 
 # command to run tests
 script:
-  - pytest
+  - pytest -v -x --doctest-modules --ignore=setup.py --cov=pylaas_core
 after_success:
   - coveralls
 

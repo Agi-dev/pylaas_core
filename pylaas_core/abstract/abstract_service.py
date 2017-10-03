@@ -22,4 +22,4 @@ class AbstractService(ServiceInterface):
         result = re.search("^(?P<service_id>[a-z0-9._-]*)_service$", name)
         if result:
             return PylaasCore.get_service(result.group('service_id'))
-        raise RuntimeError("service method 'name' missing from class")
+        raise RuntimeError("service method '{}' missing from class".format(name))
