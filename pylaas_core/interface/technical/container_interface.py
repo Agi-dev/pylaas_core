@@ -1,5 +1,7 @@
 import abc
 
+from pylaas_core.interface.core.service_interface import ServiceInterface
+
 
 class ContainerInterface(abc.ABC):
     """
@@ -18,7 +20,7 @@ class ContainerInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_definitions(self):
+    def get_definitions(self) -> dict:
         """Get container definitions
 
         Returns:
@@ -27,7 +29,7 @@ class ContainerInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def has(self, def_id):
+    def has(self, def_id) -> bool:
         """Returns true if the container can return an entry for the given identifier.
 
         Args:

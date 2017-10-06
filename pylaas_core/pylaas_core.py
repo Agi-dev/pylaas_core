@@ -3,6 +3,9 @@ This module implements the alfred core system.
 
 """
 import abc
+
+from pylaas_core.interface.core.service_interface import ServiceInterface
+from pylaas_core.interface.technical.container_interface import ContainerInterface
 from pylaas_core.technical.container import Container
 
 
@@ -39,7 +42,7 @@ class PylaasCore(abc.ABC):
         cls._container.add_definitions(definitions)
 
     @classmethod
-    def get_container(cls):
+    def get_container(cls) -> ContainerInterface:
         """Get current container
 
         Returns:

@@ -2,6 +2,7 @@ import yaml
 import sys
 from os import path
 
+from pylaas_core.interface.core.service_interface import ServiceInterface
 from pylaas_core.interface.technical.container_configurable_aware_interface import ContainerConfigurableAwareInterface
 from pylaas_core.interface.technical.container_interface import ContainerInterface
 
