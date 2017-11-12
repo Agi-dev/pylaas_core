@@ -15,7 +15,7 @@ class Container(ContainerInterface):
         _singletons (dict) : list of class singletons
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._definitions = {}
         self._singletons = {}
 

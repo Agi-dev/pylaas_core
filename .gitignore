@@ -5,6 +5,7 @@
 !.gitkeep
 .DS_Store
 *.bak
+*fix_DONOTCOMMIT.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,9 +1,10 @@
 from pylaas_core.utils import *
 import json
 from os.path import exists, dirname
+from abc import ABC
 
 
-class AbstractTestCase:
+class AbstractTestCase(ABC):
     """Abstract class to handle common functionality"""
 
     def assert_equals_resultset(self, actual):

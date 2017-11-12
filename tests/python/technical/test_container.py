@@ -6,76 +6,74 @@ from tests.fixtures.data_sets.service.dummy.dummy_configurable import DummyConfi
 
 
 class TestContainer(AbstractTestCase):
+    def s(self):
+        return self.container
+
+    def setup_method(self, method):
+        self.container = Container()
+
     def _init_container(self):
-        container = Container()
-        container.add_definitions(self.datasets_path + '/container/definitions.yml')
-        return container
+        self.s().add_definitions(self.datasets_path + '/container/definitions.yml')
 
     """
     add_definition
     """
 
-    def test_add_definitions_with_dict_return_self(self):
-        container = Container()
-        container.add_definitions({'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]})
-        result = container.add_definitions({'secondOne': [2, 3], 'thirdOne': 'some values'})
-        assert result == container
-        self.assert_equals_resultset(container._definitions)
+    def test_add_definitions_with_dict_return_cls(self):
+        self.s().add_definitions({'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]}) \
+            .add_definitions({'secondOne': [2, 3], 'thirdOne': 'some values'})
+        self.assert_equals_resultset(self.s().get_definitions())
 
     def test_add_definitions_with_unknown_file_raise_exception(self):
-        container = Container()
         with pytest.raises(FileExistsError):
-            container.add_definitions('unknownFile')
+            self.s().add_definitions('unknownFile')
 
-    def test_add_definitions_with_file_return_self(self):
-        container = Container()
-        container.add_definitions(self.datasets_path + '/container/simple_definitions.yml')
-        self.assert_equals_resultset(container._definitions)
+    def test_add_definitions_with_file_return_cls(self):
+        self.s().add_definitions(self.datasets_path + '/container/simple_definitions.yml')
+        self.assert_equals_resultset(self.s().get_definitions())
 
     """
     get_definitions
     """
 
     def test_get_definitions_with_no_definitions_return_empty_dict(self):
-        container = Container()
-        assert {} == container.get_definitions()
+        assert {} == self.s().get_definitions()
 
     def test_get_definitions_with_definitions_return_dict(self):
-        container = Container()
         definitions = {'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]}
-        container.add_definitions(definitions)
-        assert definitions == container.get_definitions()
+        self.s().add_definitions(definitions)
+        assert definitions == self.s().get_definitions()
 
     """
     has
     """
 
     def test_has_with_unknown_service_return_false(self):
-        container = self._init_container()
-        assert not container.has("unknownService")
+        self._init_container()
+        assert not self.s().has("unknownService")
 
     def test_has_with_unknown_service_return_true(self):
-        container = self._init_container()
-        assert container.has("dummy")
+        self._init_container()
+        assert self.s().has("dummy")
 
     """
     get
     """
 
     def test_get_with_unknown_service_raise_exception(self):
-        container = self._init_container()
+        self._init_container()
         with pytest.raises(RuntimeError, match="service id 'serviceUnknown' does not exists"):
-            container.get('serviceUnknown')
+            self.s().get('serviceUnknown')
 
     def test_get_with_success_return_singleton_service(self):
-        container = self._init_container()
-        service = container.get('dummy')
+        self._init_container()
+        service = self.s().get('dummy')
         assert isinstance(service, Dummy)
-        service2 = container.get('dummy')
+        service2 = self.s().get('dummy')
         assert service == service2
 
     def test_get_with_configurable_service_return_service(self):
-        container = self._init_container()
-        service = container.get('dummy_configurable')
+        self._init_container()
+        service = self.s().get('dummy_configurable')
         assert isinstance(service, DummyConfigurable)
         self.assert_equals_resultset(service._configs)

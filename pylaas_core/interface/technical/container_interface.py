@@ -8,7 +8,6 @@ class ContainerInterface(abc.ABC):
     Container interface
     """
 
-    @abc.abstractmethod
     def add_definitions(self, definitions):
         """Add definition to container
         Args:

@@ -2,4 +2,30 @@ import abc
 
 
 class ServiceInterface(abc.ABC):
-    pass
+    @abc.abstractmethod
+    def set_adapter(self, adapter):
+        """Set service adapter
+
+        Args:
+            adapter:
+
+        Returns:
+            cls
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_adapter(self):
+        """Get current adapter
+        Returns:
+            adapter
+        """
+        pass
+
+    @abc.abstractmethod
+    def has_adapter(self):
+        """Check if an adapter exists
+        Returns:
+            bool
+        """
+        pass

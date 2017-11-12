@@ -23,7 +23,7 @@ class PylaasCore(abc.ABC):
 
     @abc.abstractclassmethod
     def init(cls):  # pragma: no cover
-        """Init AlfredCore
+        """Init PylaasCore
 
         init default Container with definitions
         """
@@ -31,7 +31,7 @@ class PylaasCore(abc.ABC):
 
     @classmethod
     def _init(cls, definitions):
-        """Init AlfredCore
+        """Init PylaasCore
 
         init default Container with definitions
 
