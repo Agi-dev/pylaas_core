@@ -1,7 +1,7 @@
 import pytest
 
-from abstract.abstract_service_unit_test import AbstractServiceUnitTest
-from abstract.abstract_test_case import AbstractTestCase
+from pylaas_core.abstract.abstract_service_unit_test import AbstractServiceUnitTest
+from pylaas_core.abstract.abstract_test_case import AbstractTestCase
 from pylaas_core.pylaas_core import PylaasCore
 
 
