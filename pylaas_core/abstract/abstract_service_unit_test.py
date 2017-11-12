@@ -1,5 +1,5 @@
-from abstract.abstract_test_case import AbstractTestCase
-from abstract.service_mock import ServiceMock
+from pylaas_core.abstract.abstract_test_case import AbstractTestCase
+from pylaas_core.abstract.service_mock import ServiceMock
 from pylaas_core.pylaas_core import PylaasCore
 
 
