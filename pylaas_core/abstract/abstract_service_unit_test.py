@@ -24,3 +24,6 @@ class AbstractServiceUnitTest(AbstractTestCase):
         # init adapter as a mock if necessary
         if self._service.has_adapter():
             self._service.set_adapter(ServiceMock())
+
+    def get_service(self):
+        return self._service
