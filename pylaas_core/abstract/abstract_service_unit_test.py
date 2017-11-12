@@ -4,16 +4,8 @@ from pylaas_core.pylaas_core import PylaasCore
 
 
 class AbstractServiceUnitTest(AbstractTestCase):
-    """
-
-    Attributes:
-        _service (AbstractService): service tested
-        _service_id (string): service id tested
-    """
-
-    def __init__(self):
-        self._service = None
-        self._service_id = None
+    _service = None
+    _service_id = None
 
     def setup_method(self, method):
         if not self._service_id:
