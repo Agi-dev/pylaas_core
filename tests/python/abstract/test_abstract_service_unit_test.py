@@ -9,7 +9,7 @@ class TestAbstractServiceUnitTest(AbstractTestCase):
     """Test Suite for AbstractServiceUnitTest"""
 
     def init_container(self):
-        PylaasCore._init(self.datasets_path + '/container/definitions.yml')
+        PylaasCore()._init(self.datasets_path + '/container/definitions.yml')
 
     """
     __init__
