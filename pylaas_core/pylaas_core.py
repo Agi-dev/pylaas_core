@@ -2,26 +2,35 @@
 This module implements the alfred core system.
 
 """
+import abc
+
+from pylaas_core.interface.core.service_interface import ServiceInterface
 from pylaas_core.interface.technical.container_interface import ContainerInterface
 from pylaas_core.technical.container import Container
 
 
-class PylaasCore():
+class PylaasCore(abc.ABC):
+    """
+    Attributes:
+        _container (Container) : unique instance
+    """
     _container = None
-    _instance = None
 
     def __new__(cls):
+        """Prevent instantiation
         """
-        ensure PylaasCore is always a singleton
+        raise TypeError("PylaasCore class may not be instantiated")
 
-        Returns:
-            PylassCore (PylaasCore)
+    @abc.abstractclassmethod
+    def init(cls):  # pragma: no cover
+        """Init PylaasCore
+
+        init default Container with definitions
         """
-        if not cls._instance:
-            cls._instance = object.__new__(cls)
-        return cls._instance
+        pass
 
-    def _init(self, definitions):
+    @classmethod
+    def _init(cls, definitions):
         """Init PylaasCore
 
         init default Container with definitions
@@ -29,19 +38,21 @@ class PylaasCore():
         Args:
             definitions (dict|string): container definitions
         """
-        self._container = Container()
-        self._container.add_definitions(definitions)
+        cls._container = Container()
+        cls._container.add_definitions(definitions)
 
-    def get_container(self) -> ContainerInterface:
+    @classmethod
+    def get_container(cls) -> ContainerInterface:
         """Get current container
 
         Returns:
             container (ContainerInterface): current container
 
         """
-        return self._container
+        return cls._container
 
-    def get_service(self, service_id):
+    @classmethod
+    def get_service(cls, service_id):
         """Get service
 
         Args:
@@ -51,4 +62,4 @@ class PylaasCore():
             service (ServiceInterface): service instance (singletons)
 
         """
-        return self.get_container().get(service_id)
+        return cls.get_container().get(service_id)

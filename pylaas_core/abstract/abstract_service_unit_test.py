@@ -11,7 +11,7 @@ class AbstractServiceUnitTest(AbstractTestCase):
         if not self._service_id:
             raise RuntimeError('Attribute _service_id cannot be empty')
 
-        self._service = PylaasCore().get_service(self._service_id)
+        self._service = PylaasCore.get_service(self._service_id)
 
         # init adapter as a mock if necessary
         if self._service.has_adapter():
