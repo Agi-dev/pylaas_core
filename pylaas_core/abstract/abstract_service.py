@@ -1,6 +1,7 @@
 import sys
 from os import path
 from pylaas_core.interface.core.service_interface import ServiceInterface
+from pylaas_core.pylaas_core import PylaasCore
 
 
 class AbstractService(ServiceInterface):
@@ -23,6 +24,9 @@ class AbstractService(ServiceInterface):
             self._adapter = adapter
         else:
             self._adapter = None
+        list_services = PylaasCore.get_container().get_definitions()['services']
+        for service in list_services:
+            setattr(self, '{}_service'.format(service), self._make_service_method(service))
 
     def set_adapter(self, adapter):
         """Set service adapter
@@ -49,3 +53,9 @@ class AbstractService(ServiceInterface):
             bool
         """
         return self._adapter is not None
+
+    @staticmethod
+    def _make_service_method(service_id):
+        def get_service():
+            return PylaasCore.get_service(service_id)
+        return get_service
