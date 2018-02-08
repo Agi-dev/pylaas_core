@@ -17,6 +17,7 @@ class AbstractServiceUnitTest(AbstractTestCase):
         Returns:
             None
         """
+
         if not self._service_id:
             raise RuntimeError('Attribute _service_id cannot be empty')
 

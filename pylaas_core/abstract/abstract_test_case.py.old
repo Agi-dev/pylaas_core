@@ -116,9 +116,8 @@ class AbstractTestCase(ABC, unittest.TestCase):
         """
         find calling frame from stack calls
         Returns:
-            FrameInfo : frame
+            dict : frame
         """
-        self._calframe = None
         if not self._calframe:
             # find calling frame
             calframe = inspect.getouterframes(inspect.currentframe(), 2)
