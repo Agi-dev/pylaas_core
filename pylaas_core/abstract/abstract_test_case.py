@@ -1,10 +1,13 @@
-from pylaas_core.utils import *
+import inspect
+
+from pylaas_core import Debug
 import json
 from os.path import exists, dirname
 from abc import ABC
+import unittest
 
 
-class AbstractTestCase(ABC):
+class AbstractTestCase(ABC, unittest.TestCase):
     """Abstract class to handle common functionality"""
 
     def assert_equals_resultset(self, actual):
@@ -45,7 +48,7 @@ class AbstractTestCase(ABC):
                 json.dump(actual, f)
                 f.write(",\n")
 
-            s({
+            Debug.s({
                 'file': "{} line {}".format(filename, lineno),
                 'test': method_name,
                 'expected': expected if expected else 'Need to be set',
