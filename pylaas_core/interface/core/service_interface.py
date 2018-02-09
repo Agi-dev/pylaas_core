@@ -29,3 +29,16 @@ class ServiceInterface(abc.ABC):
             bool
         """
         pass
+
+    @staticmethod
+    @abc.abstractmethod
+    def get_service(service_id) -> 'ServiceInterface':
+        """
+        Get service
+
+        Args:
+            service_id (string): service id to instantiate from container
+
+        Returns:
+            ServiceInterface
+        """

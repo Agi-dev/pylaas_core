@@ -13,7 +13,7 @@ class AbstractServiceUnitTest(AbstractTestCase):
         setup any state tied to the execution of the given method in a
         class.  setup_method is invoked for every test method of a class.
         Args:
-            method (string): test method name
+            method (str): test method name
         Returns:
             None
         """
@@ -40,7 +40,7 @@ class AbstractServiceUnitTest(AbstractTestCase):
         mock adapter method call
 
         Args:
-            method (string): method name
+            method (str): method name
             return_value (mixed): value method should return (None by default)
 
         Returns:
@@ -51,13 +51,32 @@ class AbstractServiceUnitTest(AbstractTestCase):
         if isinstance(return_value, Exception):
             getattr(self.get_service().get_adapter(), method).side_effect = return_value
 
+    def mockService(self, service_id, method, return_value=None) -> None:
+        """
+        mock service method call
+
+        Args:
+            service_id (str): service id to mock
+            method (str): method name
+            return_value (mixed): value method should return (None by default)
+
+        Returns:
+            None
+        """
+        if not return_value: return
+
+        if isinstance(return_value, Exception):
+            getattr(self.get_service().get_service(service_id), method).side_effect = return_value
+        else:
+            setattr(self.get_service().get_service(service_id), method, ServiceMock(return_value=return_value))
+
     def assert_adapter_method_call_args(self, expected, method, index_method_call=0):
         """
         assert adapter method call args is equal to expected
 
         Args:
             expected (mixed)        :
-            method (string)         :
+            method (str)         :
             index_method_call (int) :
 
         Returns:
@@ -76,7 +95,7 @@ class AbstractServiceUnitTest(AbstractTestCase):
         get adapter method call args
 
         Args:
-            method (string)         :
+            method (str)         :
             index_method_call (int) :
 
         Returns:
