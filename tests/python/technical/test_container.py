@@ -39,7 +39,7 @@ class TestContainer(AbstractTestCase):
     """
 
     def test_get_definitions_with_no_definitions_return_empty_dict(self):
-        assert {} == self.s().get_definitions()
+        assert {'configurations': {}, 'services': {}} == self.s().get_definitions()
 
     def test_get_definitions_with_definitions_return_dict(self):
         definitions = {'configurations': {'some data1': [4, 5]}, 'services': {'service1': 'data'}}

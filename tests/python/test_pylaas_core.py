@@ -30,7 +30,7 @@ class TestPylaasCore(AbstractTestCase):
     """
 
     def test_get_container(self):
-        PylaasCore._init({'services': 'a service'})
+        PylaasCore._init({'services': {'a service': 'data'}})
         assert isinstance(PylaasCore.get_container(), Container)
 
     """
