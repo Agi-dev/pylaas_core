@@ -59,3 +59,16 @@ class AbstractService(ServiceInterface):
         def get_service():
             return PylaasCore.get_service(service_id)
         return get_service
+
+    @staticmethod
+    def get_service(service_id) -> ServiceInterface:
+        """
+        Get service
+
+        Args:
+            service_id (string): service id to instantiate from container
+
+        Returns:
+            ServiceInterface
+        """
+        return PylaasCore.get_service(service_id)
