@@ -50,3 +50,15 @@ class ContainerInterface(abc.ABC):
             ServiceInterface
         """
         pass
+
+    @abc.abstractmethod
+    def clear(self, def_id) -> None:
+        """Clear an entry of the container by its identifier
+
+        Args:
+            def_id: Identifier of the entry to look for.
+
+        Returns:
+            None
+        """
+        pass

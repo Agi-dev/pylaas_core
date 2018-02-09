@@ -10,6 +10,8 @@ class AbstractServiceIntegrationTest(AbstractTestCase):
         if not self._service_id:
             raise RuntimeError('Attribute _service_id cannot be empty')
 
+        # clear service instance
+        PylaasCore.get_container().clear(self._service_id)
         self._service = PylaasCore.get_service(self._service_id)
 
     def get_service(self):

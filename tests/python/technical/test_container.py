@@ -77,3 +77,16 @@ class TestContainer(AbstractTestCase):
         service = self.s().get('dummy_configurable')
         assert isinstance(service, DummyConfigurable)
         self.assert_equals_resultset(service._configs)
+
+    """
+    clear
+    """
+
+    def test_clear_success(self):
+        self._init_container()
+        self.s().clear('dummy')
+        service = self.s().get('dummy')
+        assert isinstance(service, Dummy)
+        self.s().clear('dummy')
+        service2 = self.s().get('dummy')
+        assert service != service2

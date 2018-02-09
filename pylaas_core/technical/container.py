@@ -84,3 +84,16 @@ class Container(ContainerInterface):
             self._singletons[def_id] = service
 
         return self._singletons[def_id]
+
+    def clear(self, def_id) -> None:
+        """Clear an entry of the container by its identifier
+
+        Args:
+            def_id: Identifier of the entry to look for.
+
+        Returns:
+            None
+        """
+        if def_id not in self._singletons:
+            return
+        del self._singletons[def_id]
