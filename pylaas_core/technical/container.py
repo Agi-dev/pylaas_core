@@ -35,7 +35,10 @@ class Container(ContainerInterface):
                 raise FileExistsError("Container definitions file '{}' does not exits".format(definitions))
 
         if self._definitions:
-            self._definitions.update(definitions)
+            if 'configurations' in definitions and definitions.get('configurations') is not None:
+                self._definitions['configurations'].update(definitions['configurations'])
+            if 'services' in definitions and definitions.get('services') is not None:
+                self._definitions['services'].update(definitions['services'])
         else:
             self._definitions = definitions
         return self
