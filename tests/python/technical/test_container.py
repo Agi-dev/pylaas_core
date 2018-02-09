@@ -20,7 +20,7 @@ class TestContainer(AbstractTestCase):
     """
 
     def test_add_definitions_with_dict_return_cls(self):
-        self.s().add_definitions({'services': {'service': [1, 2, 3]}}) \
+        self.s().add_definitions({'configurations': None, 'services': {'service': [1, 2, 3]}}) \
             .add_definitions({'configurations': {'data': [4, 5]}}) \
             .add_definitions({'configurations': {'data': [2], 'data2': 'val2'}}) \
             .add_definitions({'services': {'service2': 'a values'}})

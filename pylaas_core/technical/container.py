@@ -16,7 +16,7 @@ class Container(ContainerInterface):
     """
 
     def __init__(self) -> None:
-        self._definitions = {}
+        self._definitions = {'configurations': {}, 'services': {}}
         self._singletons = {}
 
     def add_definitions(self, definitions):
@@ -34,14 +34,10 @@ class Container(ContainerInterface):
             else:
                 raise FileExistsError("Container definitions file '{}' does not exits".format(definitions))
 
-        if self._definitions:
-            if 'configurations' in definitions and definitions.get('configurations') is not None:
-                self._definitions['configurations'].update(definitions['configurations'])
-            if 'services' in definitions and definitions.get('services') is not None:
-                self._definitions['services'].update(definitions['services'])
-        else:
-            self._definitions = {'configurations': {}, 'services': {}}
-            self._definitions.update(definitions)
+        if 'configurations' in definitions and definitions.get('configurations') is not None:
+            self._definitions['configurations'].update(definitions['configurations'])
+        if 'services' in definitions and definitions.get('services') is not None:
+            self._definitions['services'].update(definitions['services'])
 
         return self
 
