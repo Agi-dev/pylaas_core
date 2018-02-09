@@ -20,7 +20,8 @@ class TestContainer(AbstractTestCase):
     """
 
     def test_add_definitions_with_dict_return_cls(self):
-        self.s().add_definitions({'configurations': {'data': [4, 5]}, 'services': {'service': [1, 2, 3]}}) \
+        self.s().add_definitions({'services': {'service': [1, 2, 3]}}) \
+            .add_definitions({'configurations': {'data': [4, 5]}}) \
             .add_definitions({'configurations': {'data': [2], 'data2': 'val2'}}) \
             .add_definitions({'services': {'service2': 'a values'}})
         self.assert_equals_resultset(self.s().get_definitions())
@@ -41,7 +42,7 @@ class TestContainer(AbstractTestCase):
         assert {} == self.s().get_definitions()
 
     def test_get_definitions_with_definitions_return_dict(self):
-        definitions = {'firstOne': {'some data1': [4, 5]}, 'secondOne': [1, 2, 3]}
+        definitions = {'configurations': {'some data1': [4, 5]}, 'services': {'service1': 'data'}}
         self.s().add_definitions(definitions)
         assert definitions == self.s().get_definitions()
 

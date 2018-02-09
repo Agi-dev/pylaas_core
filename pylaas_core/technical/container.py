@@ -40,7 +40,9 @@ class Container(ContainerInterface):
             if 'services' in definitions and definitions.get('services') is not None:
                 self._definitions['services'].update(definitions['services'])
         else:
-            self._definitions = definitions
+            self._definitions = {'configurations': {}, 'services': {}}
+            self._definitions.update(definitions)
+
         return self
 
     def get_definitions(self):

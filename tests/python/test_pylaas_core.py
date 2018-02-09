@@ -21,8 +21,9 @@ class TestPylaasCore(AbstractTestCase):
     """
 
     def test__init_success(self):
-        PylaasCore._init({'services': 'a service'})
-        assert PylaasCore._container._definitions == {'services': 'a service'}
+        PylaasCore._init({'services': {'a service': 'data'}})
+        expected = {'configurations': {}, 'services': {'a service': 'data'}}
+        assert expected == PylaasCore._container._definitions
 
     """
     get_container
